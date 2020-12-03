@@ -44,11 +44,11 @@ public class StringUtils {
         if (str == null || str.isEmpty()) {
             return 0;
         }
-        Pattern spacePattern = Pattern.compile("\\p{Blank}");
-        Matcher matcher = spacePattern.matcher(str);
         int size = 0;
-        while (matcher.find()) {
-            size++;
+        for (Character c : str.toCharArray()) {
+            if (c == 32) {
+                size++;
+            }
         }
         return size;
     }
@@ -57,11 +57,11 @@ public class StringUtils {
         if (str == null || str.isBlank()) {
             return 0;
         }
-        Pattern digitPattern = Pattern.compile("\\p{Digit}");
-        Matcher matcher = digitPattern.matcher(str);
         int size = 0;
-        while (matcher.find()) {
-            size++;
+        for (Character c : str.toCharArray()) {
+            if (c >= 48 && c <= 57) {
+                size++;
+            }
         }
         return size;
     }
